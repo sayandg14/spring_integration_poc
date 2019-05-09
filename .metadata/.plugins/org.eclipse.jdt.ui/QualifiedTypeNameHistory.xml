@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.boot.ApplicationRunner"/>
+<fullyQualifiedTypeName name="org.springframework.messaging.MessageHandler"/>
+<fullyQualifiedTypeName name="com.example.integrationjms.endpoints.PrintService"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.ImportResource"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.example.integrationjms.endpoints.PrintServiceirectChannelOnly"/>
+<fullyQualifiedTypeName name="com.example.integrationjms.endpoints.PrintGateway"/>
+<fullyQualifiedTypeName name="org.springframework.messaging.Message"/>
+<fullyQualifiedTypeName name="org.springframework.integration.support.MessageBuilder"/>
+<fullyQualifiedTypeName name="java.util.concurrent.CountDownLatch"/>
+<fullyQualifiedTypeName name="com.example.integrationjms.dto.Person"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.sayan.java8.Addable"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+</qualifiedTypeNameHistroy>

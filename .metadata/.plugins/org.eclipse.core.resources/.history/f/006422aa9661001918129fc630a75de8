@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.sayan.java8;
+
+/**
+ * @author user
+ *
+ */
+public class User {
+
+	private String name;
+	
+	public String legalName(String name) {
+		if(name.equals("Sayan")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}

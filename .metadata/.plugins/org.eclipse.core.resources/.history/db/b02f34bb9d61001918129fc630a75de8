@@ -1,0 +1,74 @@
+/**
+ * 
+ */
+package com.sayan.java8;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ * @author user
+ *
+ */
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		User user = new User("Sayan");
+		List<String> names = new ArrayList<String>();
+		names.add("Sanjukta");
+		names.add("Sayan");
+		names.add("Shyamal");
+		names.add("");
+		names.add("Swapna");
+		boolean isLegalName = names.stream().anyMatch(user::isLegalName);
+		System.out.println("isLegalName : "+isLegalName);
+		long emptyNameCount = names.stream().filter(String::isEmpty).count();
+		System.out.println("emptyNameCount : "+emptyNameCount);
+		
+		//	Lambda examples
+		Addable ad1 = (a,b) -> {
+			return a + b ;
+		};
+		System.out.println("Lambda expression addition : "+ad1.add(10, 34));
+		
+		names.forEach(n -> System.out.print(" Names : "+n));
+		
+		//	Comparator with Lambda
+		compartorWithLambda();  
+	}
+
+	private static void compartorWithLambda() {
+		List<Product> list=new ArrayList<Product>();  
+        
+        //Adding Products  
+        list.add(new Product(1,"HP Laptop",25000f));  
+        list.add(new Product(3,"Keyboard",300f));  
+        list.add(new Product(2,"Dell Mouse",150f));  
+          
+        System.out.println("Sorting on the basis of name...");  
+  
+        // implementing lambda expression  
+        Collections.sort(list,(p1,p2)->{  
+        return p1.productName.compareTo(p2.productName);  
+        });  
+        
+        List<Product> filteredProducts = list.stream().filter(p -> p.productId >= 2).collect(Collectors.toList());
+        System.out.println("\nComparator and filter with Lambda");
+        for(Product p:filteredProducts){  
+            System.out.println(p.productId+" "+p.productName+" "+p.price);  
+        }
+        
+        list.stream().filter(p -> p.productId >=2)
+        			.map(p->p.price)
+        			.reduce(0.0f,(sum,price)->sum+price);
+	}
+
+	
+
+}

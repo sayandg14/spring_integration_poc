@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.sayan.java8;
+
+/**
+ * @author user
+ *
+ */
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		User user = new User("Sayan");
+		
+	}
+
+}

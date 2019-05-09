@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;springIntegrationWithJMS/src/main/java/com/example/integrationjms/endpoints/PrintServiceirectChannelOnly.java&apos; to &apos;PrintServiceDirectChannelOnly.java&apos;" description="Rename resource &apos;PrintServiceirectChannelOnly.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/java/com/example/integrationjms/endpoints/PrintServiceirectChannelOnly.java" name="PrintServiceDirectChannelOnly.java" stamp="1555245648101" updateReferences="true"/>
+</session>

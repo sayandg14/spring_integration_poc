@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-5.1.xsd">
+
+	<int:channel id="intChannel"></int:channel>
+	<int:channel id="stringChannel"></int:channel>
+	<int:channel id="outputChannel"></int:channel>
+	<bean id="customRouter" class="com.example.integrationjms.router.CustomRouter" />
+	<bean id="numericPrintService" class="com.example.integrationjms.endpoints.NumericPrintService" />
+	<bean id="stringPrintService" class="com.example.integrationjms.endpoints.StringPrintService" />
+	<bean id="customFilter" class="com.example.integrationjms.customfilter.CustomFilter" />
+	<bean id="customTransformer" class="com.example.integrationjms.transformer.CustomTransformer" />
+	
+	<int:gateway default-request-channel="inputChannel" service-interface="com.example.integrationjms.endpoints.PrintGateway"></int:gateway>
+	
+	<int:filter input-channel="inputChannel" output-channel="outputFromFilterChannel" ref="customFilter"></int:filter>
+	
+	<int:transformer ref="customTransformer" input-channel="outputFromObjecttransformerChannel" output-channel="outputChannel"></int:transformer>
+	<int:object-to-json-transformer input-channel="outputFromFilterChannel" output-channel="outputFromjsontransformerChannel"></int:object-to-json-transformer>
+	<int:json-to-object-transformer input-channel="outputFromjsontransformerChannel" output-channel="outputFromObjecttransformerChannel"></int:json-to-object-transformer>
+	<int:router ref="customRouter" input-channel="outputChannel" ></int:router>
+	
+	<int:service-activator ref="numericPrintService" method="print" input-channel="intChannel"></int:service-activator>
+	<int:service-activator ref="stringPrintService" method="print" input-channel="stringChannel"></int:service-activator>
+</beans>

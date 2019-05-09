@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-5.1.xsd">
+
+	<int:channel id="inboundChannel">
+		<int:queue capacity="10" />
+	</int:channel>
+	
+	<int:gateway default-request-channel="inboundChannel" service-interface="com.example.integrationjms.endpoints.PrintGateway"></int:gateway>
+	
+	<bean class="com.example.integrationjms.endpoints.PrintServiceWithGateway" name="printServiceWithGateway"/>
+	
+	<int:service-activator input-channel="inboundChannel" ref="printServiceWithGateway">
+		<int:poller fixed-rate="10" time-unit="SECONDS" max-messages-per-poll="2" />
+	</int:service-activator>
+</beans>

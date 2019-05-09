@@ -1,0 +1,18 @@
+/**
+ * 
+ */
+package com.example.integrationjms.endpoints;
+
+import org.springframework.messaging.Message;
+
+/**
+ * @author user
+ *
+ */
+public class MessagePrinter {
+	
+	public void print(Message<String> message) {
+		System.out.println("Service End point reached : "+message.getPayload());
+	}
+
+}

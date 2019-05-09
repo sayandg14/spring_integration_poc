@@ -1,0 +1,33 @@
+/**
+ * 
+ */
+package com.sayan.java8;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author user
+ *
+ */
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		User user = new User("Sayan");
+		List<String> names = new ArrayList<String>();
+		names.add("Sanjukta");
+		names.add("Sayan");
+		names.add("Shyamal");
+		names.add("");
+		names.add("Swapna");
+		boolean isLegalName = names.stream().anyMatch(user::isLegalName);
+		System.out.println("isLegalName : "+isLegalName);
+		int emptyNameCount = names.stream().filter(String::isEmpty).count();
+		System.out.println("emptyNameCount : "+emptyNameCount);
+	}
+
+}

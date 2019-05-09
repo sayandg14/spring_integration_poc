@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-jms="http://www.springframework.org/schema/integration/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration/jms http://www.springframework.org/schema/integration/jms/spring-integration-jms-5.1.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-5.1.xsd">
+
+	<bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+		<property name="targetConnectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="tcp://localhost:61616"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="sample.queue"></constructor-arg>
+	</bean>
+	
+	<int-jms:inbound-channel-adapter connection-factory="connectionFactory" channel="jmsChannel" destination="queue">
+		<int:poller fixed-rate="7000"></int:poller>
+	</int-jms:inbound-channel-adapter>
+	<!-- <int:object-to-string-transformer input-channel="inboundChannel" output-channel="outboundChannel"></int:object-to-string-transformer>
+	<int:gateway service-interface="com.example.integrationjms.endpoints.PersonGateway" default-request-channel="inboundChannel"></int:gateway> -->
+	<bean id="mp" class="com.example.integrationjms.endpoints.MessagePrinter"></bean>
+	<int:service-activator ref="mp" method="print" input-channel="jmsChannel"></int:service-activator>
+	<int:channel id="jmsChannel"></int:channel>
+	<int:channel id="inboundChannel"></int:channel>
+	<int:channel id="outboundChannel"></int:channel>
+	
+</beans>

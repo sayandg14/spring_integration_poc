@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="springIntegrationWithJMS"/>
+<aop-project name="testing-si-gateways"/>
+<aop-project name="springIntegrationCustomFilterAndRouter"/>
+<aop-project name="springIntegrationCustomFilterAndRouterAndTransformer"/>
+<aop-project name="springIntegrationWithJMSInboundIntegration2"/>
+<aop-project name="springIntegrationWithJMSOutboundIntegration"/>
+</aop-reference-model>

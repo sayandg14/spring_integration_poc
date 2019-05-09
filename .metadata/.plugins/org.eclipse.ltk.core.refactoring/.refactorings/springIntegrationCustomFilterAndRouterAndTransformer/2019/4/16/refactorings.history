@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;CustomTransformer.java&apos; to &apos;transformer&apos;" description="Move &apos;CustomTransformer.java&apos; to &apos;transformer&apos;" destination="src/main/java/com/example/integrationjms/transformer" element1="src/main/java/com/example/integrationjms/CustomTransformer.java" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1555229157453" updateReferences="true"/>
+</session>
